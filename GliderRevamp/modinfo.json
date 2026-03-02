@@ -1,0 +1,14 @@
+{
+    "type": "code",
+    "modid": "gliderrevamp",
+    "name": "Glider Revamp",
+    "authors": [
+        "Hunter404"
+    ],
+    "description": "Makes the glider configurable and more responsive.",
+    "version": "0.0.1",
+    "dependencies": {
+        "game": "1.21.6",
+        "configlib": ""
+    }
+}

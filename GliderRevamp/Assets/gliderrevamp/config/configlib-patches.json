@@ -1,0 +1,78 @@
+{
+  "version": 0,
+  "file": "GliderRevampConfig.json",
+  "patches": {},
+  "settings": [
+    {
+      "type": "separator",
+      "title": "CoreToggles"
+    },
+    {
+      "code": "DisableGlider",
+      "comment": "Completely disable the glider revamp modifications",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "code": "ShowSpeed",
+      "comment": "Display current glide speed in the HUD when gliding",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "type": "separator",
+      "title": "FlightPhysics"
+    },
+    {
+      "code": "ClimbCoefficiency",
+      "comment": "Climb efficiency (0.9 = 1 meter climbed costs 0.1 m/s lost)",
+      "type": "float",
+      "default": 0.9,
+      "range": {
+        "min": 0.0,
+        "max": 2.0
+      }
+    },
+    {
+      "code": "TurnRate",
+      "comment": "Turn rate in degrees per second",
+      "type": "float",
+      "default": 180.0,
+      "range": {
+        "min": 0.1,
+        "max": 720.0
+      }
+    },
+    {
+      "code": "DragCoefficiency",
+      "comment": "Drag coefficient (0.1 = 10% speed lost every second of flying). Prevents infinite flying",
+      "type": "float",
+      "default": 0.1,
+      "range": {
+        "min": 0.0,
+        "max": 1.0
+      }
+    },
+    {
+      "code": "StallSpeedMs",
+      "comment": "Stall speed in m/s. Glider won't activate under this speed. Player free falls below this speed x 0.66",
+      "type": "float",
+      "default": 6.0,
+      "range": {
+        "min": 1.0,
+        "max": 20.0
+      }
+    },
+    {
+      "code": "LiftFactor",
+      "comment": "Lift factor (0-1). Controls how much desired direction vs gravity affects flight direction",
+      "type": "float",
+      "default": 0.5,
+      "range": {
+        "min": 0.0,
+        "max": 1.0
+      }
+    }
+  ]
+}
+
