@@ -9,14 +9,21 @@ public class GliderRevamp_ModSystemGliding_Input_InWorldAction
     [UsedImplicitly]
     internal static bool Prefix(ModSystemGliding __instance, EnumEntityAction action, bool on, ref EnumHandling handled)
     {
-        if (ModConfig.Instance.DisableGlider) return false;
-        
+        if (ModConfig.Instance.DisableGlider)
+        {
+            return false;
+        }
+
         var entity = CapiRef(__instance)?.World.Player.Entity;
         if (entity == null)
         {
             return false;
         }
 
-        return !(entity.Pos.Motion.Length() < ModConfig.Instance.StallSpeed || entity.Pos.Motion.Y > 3f / 60);
+        var speedMs = entity.Pos.Motion.Length() * 60f;
+        var activationSpeed = ModConfig.Instance.ActivationSpeedMs;
+        var upwardSpeed = entity.Pos.Motion.Y; // Prevent activation when jumping.
+        
+        return !(speedMs < activationSpeed || upwardSpeed > -3f / 60f);
     }
 }

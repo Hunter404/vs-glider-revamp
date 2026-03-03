@@ -5,47 +5,52 @@
   "settings": [
     {
       "type": "separator",
-      "title": "CoreToggles"
+      "title": "Core Toggles"
     },
     {
+      "title": "Disable Glider",
       "code": "DisableGlider",
-      "comment": "Completely disable the glider revamp modifications",
+      "comment": "Disables the glider (can still be crafted but never activated)",
       "type": "boolean",
       "default": false
     },
     {
+      "title": "Show Speed",
       "code": "ShowSpeed",
-      "comment": "Display current glide speed in the HUD when gliding",
+      "comment": "Display the player's speed in m/s while flying",
       "type": "boolean",
       "default": false
     },
     {
       "type": "separator",
-      "title": "FlightPhysics"
+      "title": "Flight Physics"
     },
     {
+      "title": "Climb Coefficiency",
       "code": "ClimbCoefficiency",
-      "comment": "Climb efficiency (0.9 = 1 meter climbed costs 0.1 m/s lost)",
+      "comment": "Glider's climb efficiency (0.2 = 1 meter climbed costs 0.2 m/s speed)",
       "type": "float",
-      "default": 0.9,
+      "default": 0.2,
       "range": {
         "min": 0.0,
         "max": 2.0
       }
     },
     {
+      "title": "Turn Rate",
       "code": "TurnRate",
-      "comment": "Turn rate in degrees per second",
+      "comment": "Turn rate in degrees per second (90 = takes 2 seconds to do a 180 turn)",
       "type": "float",
-      "default": 180.0,
+      "default": 90.0,
       "range": {
         "min": 0.1,
         "max": 720.0
       }
     },
     {
+      "title": "Drag Coefficiency",
       "code": "DragCoefficiency",
-      "comment": "Drag coefficient (0.1 = 10% speed lost every second of flying). Prevents infinite flying",
+      "comment": "Drag coefficient (0.1 = 10% of speed^2 lost to drag). Balances high speed and prevents infinite flying or insane distances.",
       "type": "float",
       "default": 0.1,
       "range": {
@@ -54,23 +59,36 @@
       }
     },
     {
+      "title": "Stall Speed",
       "code": "StallSpeedMs",
-      "comment": "Stall speed in m/s. Glider won't activate under this speed. Player free falls below this speed x 0.66",
+      "comment": "Stall speed in m/s. Player free falls below this speed.",
       "type": "float",
-      "default": 6.0,
+      "default": 4.0,
       "range": {
         "min": 1.0,
         "max": 20.0
       }
     },
     {
-      "code": "LiftFactor",
-      "comment": "Lift factor (0-1). Controls how much desired direction vs gravity affects flight direction",
+      "title": "Activation Speed",
+      "code": "ActivationSpeedMs",
+      "comment": "Minimum speed in m/s required to activate the glider. Prevents accidental activation when jumping or falling.",
       "type": "float",
-      "default": 0.5,
+      "default": 8.0,
       "range": {
         "min": 0.0,
-        "max": 1.0
+        "max": 20.0
+      }
+    },
+    {
+      "title": "Terminal Velocity",
+      "code": "TerminalVelocityMs",
+      "comment": "Maximum speed in m/s the glider can reach (terminal velocity)",
+      "type": "float",
+      "default": 40.0,
+      "range": {
+        "min": 5.0,
+        "max": 100.0
       }
     }
   ]

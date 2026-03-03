@@ -1,4 +1,3 @@
-using System;
 
 namespace GliderRevamp;
 
@@ -18,25 +17,15 @@ public sealed class ModConfig
     // Flight Physics
     // ============================================================
 
-    public float ClimbCoefficiency { get; set; } = 0.9f;
+    public float ClimbCoefficiency { get; set; } = 0.2f;
 
-    public float TurnRateRadians { get; set; } = 1f;
-
-    public float TurnRate
-    {
-        get => TurnRateRadians * 180f / (float)Math.PI;
-        set => TurnRateRadians = value * (float)Math.PI / 180f;
-    }
+    public float TurnRate { get; set; } = 90f;  // degrees per second
 
     public float DragCoefficiency { get; set; } = 0.1f;
 
-    public float StallSpeed { get; set; } = 6 / 60f;
+    public float StallSpeedMs { get; set; } = 6f;
+    
+    public float ActivationSpeedMs { get; set; } = 8f;
 
-    public float StallSpeedMs
-    {
-        get => StallSpeed * 60;
-        set => StallSpeed = value / 60;
-    }
-
-    public float LiftFactor { get; set; } = 0.5f;
+    public float TerminalVelocityMs { get; set; } = 40f;  // m/s
 }

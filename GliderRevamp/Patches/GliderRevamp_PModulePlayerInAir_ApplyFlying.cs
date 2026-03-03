@@ -40,7 +40,7 @@ public class GliderRevamp_PModulePlayerInAir_ApplyFlying
 
         var v = pos.Motion;
         var speed = v.Length();
-        if (speed < config.StallSpeed * 0.66f)
+        if (speed < config.StallSpeedMs / 60f || config.DisableGlider)
         {
             controls.Gliding = false;
             controls.GlideSpeed = 0;
@@ -55,7 +55,7 @@ public class GliderRevamp_PModulePlayerInAir_ApplyFlying
         var vDir = v.Normalize();
         var viewDir = pos.GetViewVector().ToVec3d().Normalize();
 
-        var turnRateRadPerSec = config.TurnRateRadians;
+        var turnRateRadPerSec = config.TurnRate * (float)Math.PI / 180f;
         var maxTurn = turnRateRadPerSec * dt;
         
         var newDir = RotateTowards(vDir, viewDir, maxTurn);
@@ -69,7 +69,7 @@ public class GliderRevamp_PModulePlayerInAir_ApplyFlying
         energy -= config.DragCoefficiency * Math.Max(speed * speed, 0.15f) * dt;
         
         // Limit new speed to terminal velocity.
-        energy = GameMath.Clamp(energy, 0, 40f / 60f);
+        energy = GameMath.Clamp(energy, 0, config.TerminalVelocityMs / 60f);
 
         controls.GlideSpeed = energy;
         
